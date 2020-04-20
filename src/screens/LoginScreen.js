@@ -53,14 +53,16 @@ export default class LoginScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#003f5c',
+    backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   inputView: {
     width: '80%',
-    backgroundColor: '#465881',
+    backgroundColor: '#ffffff',
     borderRadius: 25,
+    borderColor: '#000000',
+    borderWidth:1,
     height: 50,
     marginBottom: 20,
     justifyContent: 'center',
@@ -68,10 +70,11 @@ const styles = StyleSheet.create({
   },
   inputText: {
     height: 50,
-    color: 'white',
+    color: '#000',
+    fontSize: 18,
   },
   forgot: {
-    color: 'white',
+    color: '#000',
     fontSize: 15,
   },
   loginBtn: {
