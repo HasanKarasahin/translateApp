@@ -17,8 +17,8 @@ const state = {
   password: '',
 };
 
-export default class LoginScreen extends React.Component {
-  render(navigation) {
+export default class RegisterScreen extends React.Component {
+  render() {
     return (
       <>
         <StatusBar barStyle="dark-content" />
@@ -27,7 +27,7 @@ export default class LoginScreen extends React.Component {
             <ImageBackground
               style={styles.imageBackground}
               source={require('./header.png')}>
-              <Text style={styles.text}>Giriş</Text>
+              <Text style={styles.text}>Kayıt</Text>
             </ImageBackground>
           </View>
 
@@ -48,18 +48,15 @@ export default class LoginScreen extends React.Component {
                 onChangeText={(text) => this.setState({email: text})}
               />
             </View>
-            <TouchableOpacity
-              onPress={() => {
-                this.props.navigation.navigate('Register');
-              }}>
+            <TouchableOpacity>
               <Text style={styles.forgot}>Üye olmak için tıklayın</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.loginBtn}
               onPress={() => {
-                this.props.navigation.navigate('MainScreen');
+                alert('You tapped the button!');
               }}>
-              <Text style={styles.loginText}>Giriş</Text>
+              <Text style={styles.loginText}>Kayıt Ol</Text>
             </TouchableOpacity>
           </View>
         </SafeAreaView>
