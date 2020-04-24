@@ -10,14 +10,14 @@ import {
   ImageBackground,
 } from 'react-native';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-
-const state = {
-  email: '',
-  password: '',
-};
-
+import FloatingLabelInput from '../components/FloatingLabelInput';
 export default class RegisterScreen extends React.Component {
+  state = {
+    email: '',
+    password: '',
+    value: '',
+  };
+
   render() {
     return (
       <>
@@ -33,30 +33,41 @@ export default class RegisterScreen extends React.Component {
 
           <View style={styles.bottomSection}>
             <View style={styles.inputView}>
-              <TextInput
-                style={styles.inputText}
-                placeholder="Kullanıcı Adı"
-                placeholderTextColor="#003f5c"
-                onChangeText={(text) => this.setState({email: text})}
+              <FloatingLabelInput
+                label="Email"
+                value={this.state.password}
+                onChangeText={this.handlePassordTextChange}
               />
             </View>
             <View style={styles.inputView}>
-              <TextInput
-                style={styles.inputText}
-                placeholder="Şifre"
-                placeholderTextColor="#003f5c"
-                onChangeText={(text) => this.setState({email: text})}
+              <FloatingLabelInput
+                label="Şifre"
+                value={this.state.password}
+                onChangeText={this.handlePassordTextChange}
               />
             </View>
-            <TouchableOpacity>
-              <Text style={styles.forgot}>Üye olmak için tıklayın</Text>
+
+            <View style={styles.inputView}>
+              <FloatingLabelInput
+                label="Şifre Tekrar"
+                value={this.state.password}
+                onChangeText={this.handlePassordTextChange}
+              />
+            </View>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate('Login');
+              }}>
+              <Text style={styles.forgot}>
+                Zaten üyemisin?Girş yapmak için tıkla
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.loginBtn}
               onPress={() => {
-                alert('You tapped the button!');
+                this.props.navigation.navigate('MainScreen');
               }}>
-              <Text style={styles.loginText}>Kayıt Ol</Text>
+              <Text style={styles.loginText}>Kayıt ol</Text>
             </TouchableOpacity>
           </View>
         </SafeAreaView>
@@ -73,14 +84,8 @@ const styles = StyleSheet.create({
   },
   inputView: {
     width: '80%',
-    backgroundColor: '#ffffff',
-    borderRadius: 25,
-    borderColor: '#000000',
-    borderWidth: 1,
-    height: 50,
     marginBottom: 20,
     justifyContent: 'center',
-    padding: 20,
   },
   inputText: {
     height: 50,
@@ -93,7 +98,7 @@ const styles = StyleSheet.create({
   },
   loginBtn: {
     width: '80%',
-    backgroundColor: '#fb5b5a',
+    backgroundColor: '#DA17FF',
     borderRadius: 25,
     height: 50,
     alignItems: 'center',
@@ -119,6 +124,10 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 30,
     color: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+    margin: 10,
   },
 });
 //export default LoginScreen;
