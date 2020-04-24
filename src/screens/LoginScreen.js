@@ -10,14 +10,18 @@ import {
   ImageBackground,
 } from 'react-native';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-
-const state = {
-  email: '',
-  password: '',
-};
+import FloatingLabelInput from '../components/FloatingLabelInput';
 
 export default class LoginScreen extends React.Component {
+  state = {
+    email: '',
+    password: '',
+    value: '',
+  };
+
+  handleEmailTextChange = (newText) => this.setState({email: newText});
+  handlePassordTextChange = (newText) => this.setState({password: newText});
+
   render(navigation) {
     return (
       <>
@@ -33,19 +37,17 @@ export default class LoginScreen extends React.Component {
 
           <View style={styles.bottomSection}>
             <View style={styles.inputView}>
-              <TextInput
-                style={styles.inputText}
-                placeholder="Kullanıcı Adı"
-                placeholderTextColor="#003f5c"
-                onChangeText={(text) => this.setState({email: text})}
+              <FloatingLabelInput
+                label="Kullanıcı Adı"
+                value={this.state.email}
+                onChangeText={this.handleEmailTextChange}
               />
             </View>
             <View style={styles.inputView}>
-              <TextInput
-                style={styles.inputText}
-                placeholder="Şifre"
-                placeholderTextColor="#003f5c"
-                onChangeText={(text) => this.setState({email: text})}
+              <FloatingLabelInput
+                label="Şifre"
+                value={this.state.password}
+                onChangeText={this.handlePassordTextChange}
               />
             </View>
             <TouchableOpacity
@@ -54,6 +56,7 @@ export default class LoginScreen extends React.Component {
               }}>
               <Text style={styles.forgot}>Üye olmak için tıklayın</Text>
             </TouchableOpacity>
+
             <TouchableOpacity
               style={styles.loginBtn}
               onPress={() => {
@@ -76,14 +79,8 @@ const styles = StyleSheet.create({
   },
   inputView: {
     width: '80%',
-    backgroundColor: '#ffffff',
-    borderRadius: 25,
-    borderColor: '#000000',
-    borderWidth: 1,
-    height: 50,
     marginBottom: 20,
     justifyContent: 'center',
-    padding: 20,
   },
   inputText: {
     height: 50,
@@ -96,7 +93,7 @@ const styles = StyleSheet.create({
   },
   loginBtn: {
     width: '80%',
-    backgroundColor: '#fb5b5a',
+    backgroundColor: '#DA17FF',
     borderRadius: 25,
     height: 50,
     alignItems: 'center',
@@ -124,4 +121,3 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
-//export default LoginScreen;
