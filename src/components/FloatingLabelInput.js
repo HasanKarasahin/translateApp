@@ -1,17 +1,6 @@
 import React from 'react';
 
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  Text,
-  StatusBar,
-  TextInput,
-  Picker,
-  Button,
-  Image,
-  Alert,
-} from 'react-native';
+import {StyleSheet, View, Text, TextInput} from 'react-native';
 
 class FloatingLabelInput extends React.Component {
   state = {
@@ -41,7 +30,7 @@ class FloatingLabelInput extends React.Component {
             fontSize: 20,
             color: '#000',
             borderBottomWidth: 2,
-            borderBottomColor: '#555',
+            borderBottomColor: !isFocused ? '#555' : '#cc222a',
           }}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
